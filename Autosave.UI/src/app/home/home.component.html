@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="mb-0">Saved Entries</h4>
+        <div>
+            <a class="btn btn-primary btn-sm me-2" routerLink="form1">New</a>
+            <button class="btn btn-primary btn-sm" (click)="refresh()">Refresh</button>
+            <a class="btn btn-success btn-sm mx-2" href="/swagger/index.html">Swagger</a>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Hits</th>
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Autosaved</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let entry of entries" (click)="goToForm(entry.id)" class="table-row-hover" style="cursor: pointer;">
+                    <td>{{ entry.id }}</td>
+                    <td>{{ entry.title }}</td>
+                    <td>{{ entry.description }}</td>
+                    <td>{{ entry.hits }}</td>
+                    <td>{{ entry.dateCreated | date: 'short' }}</td>
+                    <td>
+                        <span class="badge" [ngClass]="entry.isAutosaved ? 'bg-success' : 'bg-secondary'">
+                            {{ entry.isAutosaved ? 'Yes' : 'No' }}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

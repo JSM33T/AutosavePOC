@@ -1,0 +1,6 @@
+@Autosave.Api_HostAddress = http://localhost:5092
+
+GET {{Autosave.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
